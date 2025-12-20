@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Психологическая помощь | [Имя психолога]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-light: #f8f9fa;
+            --color-white: #ffffff;
+            --color-gray-light: #e9ecef;
+            --color-gray: #adb5bd;
+            --color-gray-medium: #6c757d;
+            --color-gray-dark: #495057;
+            --color-dark: #212529;
+            --color-accent: #4a4a4a;
+            --color-hot: #d9534f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-dark);
+            background-color: var(--color-white);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        header {
+            padding: 25px 0;
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-dark);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--color-gray-medium);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--color-gray-medium);
+            font-weight: 400;
+            transition: color 0.3s;
+            font-size: 25px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        nav a:hover {
+            color: var(--color-dark);
+        }
+        
+        /* Главный баннер */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+        
+        .hero-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            line-height: 1.3;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--color-dark);
+            font-weight: 500;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--color-gray-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+
+
+        .hero-cta {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .hero-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-dark);
+            text-decoration: none;
+            font-size: 26px;
+            font-weight: 400;
+            padding: 8px 0;
+            position: relative;
+            overflow: hidden;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .hero-link-btn:hover{
+            color: var(--color-hot);
+        }
+
+        .hero-link-btn:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-hot);
+            transform: translateX(-101%);
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .hero-link-btn:hover:before {
+            transform: translateX(0);
+
+        }
+
+        .link-arrow {
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .hero-link-btn:hover .link-arrow {
+            transform: translateX(5px);
+            color: var(--color-hot);
+        }
+
+
+        
+        /* Разделы */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 500;
+            color: var(--color-dark);
+        }
+        
+        /* Ситуации */
+        .situations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .situation-item {
+            padding: 30px;
+            background-color: var(--color-light);
+            border-left: 3px solid var(--color-gray);
+        }
+        
+        .situation-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--color-dark);
+        }
+        
+        /* Метод работы */
+        .method-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .method-content p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--color-gray-dark);
+        }
+        
+        .method-points {
+            margin-top: 40px;
+        }
+        
+        .method-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .method-point-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: var(--color-gray);
+            margin-right: 15px;
+            min-width: 40px;
+        }
+        
+        .method-point-text h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--color-dark);
+        }
+        
+        /* Тарифы */
+        .tariffs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .tariff-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            padding: 40px 30px;
+            border: 1px solid var(--color-gray-light);
+            position: relative;
+        }
+        
+        .tariff-hot {
+            border-color: var(--color-hot);
+        }
+        
+        .hot-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--color-hot);
+            color: white;
+            padding: 5px 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .tariff-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--color-dark);
+        }
+        
+        .tariff-price {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .price-current {
+            font-size: 42px;
+            font-weight: 500;
+            color: var(--color-dark);
+        }
+        
+        .price-old {
+            font-size: 24px;
+            color: var(--color-gray);
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+        
+        .tariff-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        
+        .tariff-features li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .tariff-features li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-gray);
+            font-size: 20px;
+        }
+        
+        /* Раздел "Обо мне" */
+        .about-section {
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .about-photo-container {
+            flex: 0 0 350px;
+        }
+        
+        .about-photo-placeholder {
+            width: 100%;
+            height: 450px;
+            background-color: var(--color-gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gray-medium);
+            font-size: 16px;
+        }
+        .about-photo {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            margin-bottom: 25px;
+            color: var(--color-dark);
+            font-weight: 500;
+        }
+        
+        .about-description {
+            font-size: 18px;
+            color: var(--color-gray-dark);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .education-list {
+            list-style: none;
+        }
+        
+        .education-item {
+            margin-bottom: 25px;
+            padding-left: 0;
+            position: relative;
+        }
+        
+        .education-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--color-dark);
+        }
+        
+        .education-item p {
+            color: var(--color-gray-medium);
+            font-size: 16px;
+        }
+        
+        .education-item:not(:last-child) {
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+        
+        /* Отзывы */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .review-item {
+            background-color: var(--color-light);
+            border: 1px solid var(--color-gray-light);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+
+        .review-photo {
+            width: 100%;
+            height: 100%;
+            object-fit:fill;
+            display: block;
+            border: 1px solid var(--color-gray-light);
+        }
+
+        
+        .review-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gray);
+            font-size: 14px;
+            background-color: var(--color-gray-light);
+        }
+        .reviews-grid > * {
+            aspect-ratio: 3/4;
+        }
+        
+        /* Подвал */
+        footer {
+            padding: 50px 0 30px;
+            background-color: var(--color-light);
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .footer-links a {
+            color: var(--color-gray-medium);
+            text-decoration: none;
+            margin: 0 15px 10px;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-dark);
+        }
+        
+        .footer-info {
+            color: var(--color-gray);
+            font-size: 14px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-buy {
+            background-color: var(--color-dark);
+            color: white;
+        }
+        
+        .btn-buy:hover {
+            background-color: var(--color-gray-dark);
+        }
+        
+        .btn-hot {
+            background-color: var(--color-hot);
+            color: white;
+        }
+        
+        .btn-hot:hover {
+            opacity: 0.9;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            
+            .about-photo-container {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .about-photo-placeholder {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0 10px;
+            }
+            
+            .hero-quote {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .tariffs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tariff-card {
+                width: 100%;
+            }
+            
+            .about-photo-placeholder {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero-quote {
+                font-size: 26px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 35px;
+            }
+            
+            .about-photo-placeholder {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Психолог Марина Федорина<span></span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#situations">Ситуации</a></li>
+                        <li><a href="#method">Мой подход</a></li>
+                        <li><a href="#tariffs">Тарифы</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
+                        <li><a href="#about">Обо мне</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главное обращение -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-quote">
+                "Вы станете для ребенка и своей семьи в целом, спокойной и поддерживающей опорой, сохранив с ними близкий и доверительный контакт даже в самый «сильный шторм»."
+            </div>
+            <div class="hero-subtitle">
+                Психоаналитический терапевт Марина Федорина
+            </div>
+            <div class="hero-cta">
+            <a href="#tariffs" class="hero-link-btn">
+                <span>ЗАПИСАТЬСЯ</span>
+                <svg class="link-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+        </div>
+    </section>
+
+    <!-- Знакомы ли вам эти ситуации? -->
+    <section id="situations">
+        <div class="container">
+            <h2 class="section-title">Знакомы ли вам эти ситуации?</h2>
+            <div class="situations">
+                <div class="situation-item">
+                    <!-- <h3>Потеря смысла и направления</h3>
+                    <p>Просыпаетесь с чувством пустоты, не понимаете, куда двигаться дальше, а рутинные дела не приносят удовлетворения.</p> -->
+                    <h3>«Мой ребенок меня не слышит, приходится повторять по сто раз одно и тоже»</h3>
+                    <h3>«Часто переживаю, что мой ребенок заболеет или с ним что-то случиться»</h3>
+                    <h3>«Тревожусь из-за каждого чиха ребенка, рисуя мысленно карты болезни»</h3>
+                </div>
+                <div class="situation-item">
+                    <!-- <h3>Тревога и внутреннее напряжение</h3>
+                    <p>Постоянное чувство тревоги, которое мешает сосредоточиться, принимать решения и наслаждаться текущим моментом.</p> -->
+                    <h3>«Часто думаю и переживаю, что с мужем или ребенком может что-то произойти плохое( авария, болезнь, несчастный случай)»</h3>
+                    <h3>«Если мне дочь долго не отвечает на звонки, в моей голове рисуются ужасные картины и я ничего с этим не могу поделать…»</h3>
+                </div>
+                <div class="situation-item">
+                    <h3>«Когда близких нет рядом, ощущаю внутреннюю пустоту, очень тяжело переношу чувство одиночества, ощущение, как будто забрали часть меня»</h3>
+                    <h3>«Очень сложно справится с контролем, должна постоянно знать, что как и где с моими детьми, а иногда и мужем»</h3>
+                    <h3>«А ещё часто кажется, что если сейчас все так хорошо, то обязательно должно произойти что-то плохое.»</h3>
+                </div>
+                <!-- <div class="situation-item">
+                    <h3>Низкая самооценка и неуверенность</h3>
+                    <p>Сомнения в своих силах, страх совершить ошибку, сравнение себя с другими и ощущение, что вы "недостаточно хороши".</p>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Метод работы -->
+    <section id="method">
+        <div class="container">
+            <h2 class="section-title">Мой подход и метод работы</h2>
+            <div class="method-content">
+                <p>Имея более 10 лет опыта работы в частной практике и используя  глубинный подход-психоанализа, с опорой на семейную системную  психотерапию. В работе с клиентами, я не просто убираю поверхностный  симптом, а помогаю  женщине обнаружить корни её переживаний, осмыслить неосознаваемые конфликты и шаблоны поведения, которые влияют на  эмоциональное состояние и повседневную жизнь и жизнь её семьи.</p>
+                <p>В результате :</p>
+
+                <div class="method-points">
+                    <div class="method-point">
+                        <div class="method-point-number">1</div>
+                        <div class="method-point-text">
+                            <h4>Вы не просто поймете причину своей тревоги, страхов, но научитесь справляться и управлять своим состоянием.</h4>
+                            <!-- <p>Мы вместе исследуем ваши текущие трудности, находим их корни и формируем ясное понимание происходящего.</p> -->
+                        </div>
+                    </div>
+                    <div class="method-point">
+                        <div class="method-point-number">2</div>
+                        <div class="method-point-text">
+                            <h4>Получите: спокойствие, уверенность в себе. Больше сил и энергии, как будто в  сутках стало больше 24 часов, потому что вы стали успевать больше и качественнее</h4>
+                            <!-- <p>Фокусируемся на ваших сильных сторонах и внутренних ресурсах, разрабатываем новые способы реагирования на сложные ситуации.</p> -->
+                        </div>
+                    </div>
+                    <div class="method-point">
+                        <div class="method-point-number">3</div>
+                        <div class="method-point-text">
+                            <h4>Появится еще больше ощущения счастья и удовольствия от жизни</h4>
+                            <!-- <p>Помогаем закрепить новые навыки и подходы в повседневной жизни, чтобы изменения были устойчивыми и глубокими.</p> -->
+                        </div>
+                    </div>
+                    <div class="method-point">
+                        <div class="method-point-number">4</div>
+                        <div class="method-point-text">
+                            <h4>Научитесь лучше понимать и взаимодействовать с со своими детьми и окружающими людьми. </h4>
+                            <!-- <p>Помогаем закрепить новые навыки и подходы в повседневной жизни, чтобы изменения были устойчивыми и глубокими.</p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тарифы -->
+    <section id="tariffs">
+        <div class="container">
+            <h2 class="section-title">Формат работы и тарифы</h2>
+            <div class="tariffs">
+                <!-- Базовый тариф -->
+                <div class="tariff-card">
+                    <h3 class="tariff-name">Разовая сессия</h3>
+                    <div class="tariff-price">
+                        <span class="price-current">3 500 ₽</span>
+                    </div>
+                    <ul class="tariff-features">
+                        <li>Консультация 50 минут онлайн или очно</li>
+                        <li>Разберем актуальный запрос</li>
+                        <li>Начнем работать с ключевыми причинами текущего состояния </li>
+                        <li>Наметим конкретные шаги, которые сможете применить сразу после консультации </li>
+                        <li>Уже после первой консультации, вы начнете замечать изменения в своем состоянии.</li>
+                    </ul>
+                    <button class="btn btn-buy">Записаться</button>
+                </div>
+                
+                <!-- "Горячий" тариф со скидкой -->
+                <div class="tariff-card tariff-hot">
+                    <div class="hot-badge">Выгодно</div>
+                    <h3 class="tariff-name">Курс 3 месяца/1 раз в неделю</h3>
+                    <div class="tariff-price">
+                        <span class="price-current">35 000 ₽</span>
+                        <ul class="tariff-features">
+                            <li>+ 2 встречи Вам в подарок</li>
+                            <li>Всего 2 900 ₽ за консультацию</li>
+                        </ul>
+                        <!-- <span class="price-old">Всего 2 900 ₽ за консультацию</span> -->
+                    </div>
+                    <ul class="tariff-features">
+                        <li>12 индивидуальных сессий по 50 минут</li>
+                        <li>Системная работа над проблемой, чтобы появились устойчивые изменения, сформировались новые модели поведения, изменился внутренний диалог </li>
+                        <li>Одна встреча в неделю, продолжительность -50 мин, в закрепленное за вами время и день </li>
+                        <li>Индивидуальная программа</li>
+                    </ul>
+                    <button class="btn btn-hot">Купить</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section id="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы клиентов</h2>
+            <div class="reviews-grid">
+                <img src="images/otzyvi/1.jpg" class="review-photo">
+                <img src="images/otzyvi/2-1.jpg" class="review-photo">
+                <img src="images/otzyvi/2-2.jpg" class="review-photo">
+                <img src="images/otzyvi/4.jpg" class="review-photo">
+                <img src="images/otzyvi/5.jpg" class="review-photo">
+                <img src="images/otzyvi/6.jpg" class="review-photo">
+
+                <!-- Здесь будут скриншоты отзывов
+                <div class="review-item">
+                    <div class="review-placeholder">Скриншот отзыва 1</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-placeholder">Скриншот отзыва 2</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-placeholder">Скриншот отзыва 3</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-placeholder">Скриншот отзыва 4</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-placeholder">Скриншот отзыва 5</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-placeholder">Скриншот отзыва 6</div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Обо мне</h2>
+            <div class="about-content">
+                <!-- Левая часть: фото -->
+                <div class="about-photo-container">
+                    <!-- <div class="about-photo-placeholder"> -->
+                        <img src="images/hero-image.jpg" alt="Марина Федорина, профессиональный психолог" class="about-photo">
+                        <!-- [здесь будет фото]
+                    </div> -->
+                </div>
+                
+                <!-- Правая часть: текст и образование -->
+                <div class="about-text">
+                    <h3>Марина Федорина</h3>
+                    <h3>семейный психолог, психолог-педагог, психоаналитический терапевт.</h3>
+                    <div class="about-description">
+                        <p>Более 10 лет частной практики, опыт преподавания психологии.</p>
+                        <p>Автор и ведущая женских групп и тренингов.</p>
+                        <p>Счастливая жена и многодетная мама.</p>
+                    </div>
+                    
+                    <!-- Блок с образованием -->
+                    <div class="education">
+                        <h3 style="font-size: 24px; margin-bottom: 25px;">Образование и квалификация</h3>
+                        <ul class="education-list">
+                            <li class="education-item">
+                                <h4>Психолог-педагог</h4>
+                                <p>Вятский Государственный Гуманитарный Университет</p>
+                            </li>
+                            <li class="education-item">
+                                <h4>Семейное и детское консультирование</h4>
+                                <p>Московский Институт Психоанализа</p>
+                            </li>
+                            <li class="education-item">
+                                <h4>Психоаналитический психотерапевт</h4>
+                                <p>Институт Психоанализа на Чистых прудах</p>
+                            </li>
+                            <li class="education-item">
+                                <h4>Психологическое консультирование взрослых</h4>
+                                <p>Академия Психологии и Коучинга</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo">Психолог Марина Федорина<span></span></a>
+                <div class="footer-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Договор-оферта</a>
+                    <a href="#">Реквизиты</a>
+                </div>
+                <div class="footer-info">
+                    <p>© 2025 Марина Федорина. Все права защищены.</p>
+                    <p>ИП Федорина Марина Александровна, ОГРНИП 323527500036987, ИНН 434546222756</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка к разделам
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // // Обработка кнопок покупки
+        // document.querySelectorAll('.btn-buy, .btn-hot').forEach(button => {
+        //     button.addEventListener('click', function() {
+        //         // Здесь должна быть реализация перехода к оплате
+        //         alert('В этом месте будет переход к оплате. Не забудьте подключить платежную систему!');
+        //     });
+        // });
+    </script>
+</body>
+</html>
