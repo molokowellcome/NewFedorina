@@ -3,21 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Психологическая помощь | Марина Федорина</title>
+    <title>Психолог Марина Федорина | Помощь мамам и семьям</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --color-light: #f8f9fa;
             --color-white: #ffffff;
+            --color-light: #f8f9fa;
             --color-gray-light: #e9ecef;
-            --color-gray: #393939;
-            --color-gray-medium: #2f3234;
-            --color-gray-dark: #212426;
-            --color-dark: #000000;
-            --color-accent: #000000;
-            --color-hot: #d9534f;
+            --color-gray: #6c757d;
+            --color-gray-medium: #495057;
+            --color-gray-dark: #343a40;
+            --color-dark: #212529;
+            --color-accent: #8b0000; /* Бордовый акцент */
+            --color-accent-light: #a52a2a;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         
         * {
@@ -26,383 +31,445 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: var(--color-dark);
             background-color: var(--color-white);
             line-height: 1.6;
-            font-weight: 350;
+            font-weight: 400;
             overflow-x: hidden;
+            font-size: 16px;
         }
         
+        /* Базовый контейнер */
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            margin-top: 2px;
-            padding-top: 2px;
             padding: 0 20px;
         }
         
-        /* Шапка */
-        header {
-            padding: 25px 0;
-            border-bottom: 1px solid var(--color-gray-light);
+        /* Анимации появления */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .header-content {
+        .barabarabere{
+            margin-top:15px;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;      
+        }
+
+
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        /* Шапка - мобильная первым делом */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            font-weight: 600;
+            font-weight: 800;
+            font-size: 22px;
             color: var(--color-dark);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo i {
+            color: var(--color-accent);
         }
         
         .logo span {
-            color: var(--color-gray-medium);
+            color: var(--color-accent);
+        }
+        
+        /* Мобильное меню */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--color-dark);
+            cursor: pointer;
+            z-index: 1001;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-        }
-        
-        nav li {
-            margin-left: 30px;
+            gap: 30px;
         }
         
         nav a {
             text-decoration: none;
             color: var(--color-gray-medium);
-            font-weight: 400;
-            transition: color 0.3s;
-            font-size: 18px;
-            font-family:Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
         }
         
         nav a:hover {
-            color: var(--color-dark);
+            color: var(--color-accent);
         }
         
-        /* Главный баннер */
-        .hero {
-            padding: 100px 0;
-            text-align: center;
-            border-bottom: 1px solid var(--color-gray-light);
-        }
-
-        
-        .hero-quote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
-            line-height: 1.3;
-            max-width: 800px;
-            margin: 0 auto 20px;
-            color: var(--color-dark);
-            font-weight: 500;
-            text-align: left;
-        }
-        
-        .hero-subtitle {
-            font-size: 18px;
-            color: var(--color-gray-medium);
-            max-width: 600px;
-            margin: 0 auto;
-            align-items: center;
-        }
-
-        .hero-cta {
-            margin-top: 50px;
-            margin-left: 55px;
-            text-align: left;
-        }
-        .hero-photo {
-            flex: 0 0 300px;
-        }
-
-        .hero-image {
-            width: 135%;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
-        }
-
-        .hero-link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--color-dark);
-            text-decoration: none;
-            font-size: 26px;
-            font-weight: 400;
-            padding: 8px 0;
-            position: relative;
-            overflow: hidden;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-
-        .hero-link-btn:hover {
-            color: var(--color-hot);
-        }
-
-        .hero-link-btn:before {
+        nav a:after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover:after {
             width: 100%;
-            height: 1px;
-            background-color: var(--color-hot);
-            transform: translateX(-101%);
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .hero-link-btn:hover:before {
-            transform: translateX(0);
-        }
-
-        .link-arrow {
-            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .hero-link-btn:hover .link-arrow {
-            transform: translateX(5px);
-            color: var(--color-hot);
         }
         
-        /* Разделы */
-        section {
-            margin-top: 0px;
-            padding: 50px 0;
-            border-bottom: 1px solid var(--color-gray-light);
-        }
-        
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            margin-bottom: 50px;
-            text-align: center;
-            font-weight: 500;
-            color: var(--color-dark);
-        }
-        
-        /* СИТУАЦИИ - СВАЙП ГАЛЕРЕЯ */
-        .situations-slider-section {
+        /* Главный баннер - Mobile First */
+        .hero {
+            padding: 140px 0 80px;
+            background-color: var(--color-light);
             position: relative;
-            padding: 80px 0;
             overflow: hidden;
         }
         
-        .situations-slider-container {
-            max-width: 900px;
-            margin: 0 auto;
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent) 100%);
+            opacity: 0.05;
+            border-radius: 0 0 0 100px;
+        }
+        
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .hero-photo {
+            width: 100%;
+            max-width: 300px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .hero-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .hero-photo:hover img {
+            transform: scale(1.23);
+        }
+        
+        .hero-content {
+            text-align: center;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+        
+        .hero-quote {
+            font-size: 28px;
+            line-height: 1.4;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+            position: relative;
+            padding: 0 10px;
+        }
+        
+        .hero-quote:before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            font-size: 60px;
+            color: var(--color-dark);
+            opacity: 0.6;
+            font-family: serif;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--color-gray-dark);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            background-color: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: var(--transition);
+            border: 2px solid var(--color-accent);
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.25);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-accent);
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--color-accent);
+            color: white;
+        }
+        
+        /* Секции */
+        section {
+            padding: 80px 0;
             position: relative;
         }
         
-        .situations-slider {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            touch-action: pan-y;
-        }
-        
-        .situation-slide {
-            flex: 0 0 100%;
-            max-width: 100%;
-            padding: 0 20px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .situation-card {
-            width: 100%;
-            max-width: 600px;
-            padding: 40px 35px;
-            background-color: var(--color-light);
-            border-left: 8px solid var(--color-hot);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            border-radius: 4px;
-        }
-        
-        .situation-card p {
-            font-family: 'Inter', sans-serif;
-            font-size: 21px;
-            margin-bottom: 20px;
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 50px;
             color: var(--color-dark);
-            line-height: 1.5;
+            position: relative;
+            padding-bottom: 15px;
         }
         
-        .situation-card h3:not(:last-child) {
-            margin-bottom: 25px;
-        }
-        
-        /* Кнопки навигации слайдера ситуаций */
-        .situation-slider-btn {
+        .section-title:after {
+            content: '';
             position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-accent);
+            border-radius: 2px;
+        }
+        
+        /* Ситуации - нумерованный список */
+        .situations-list {
+            max-width: 800px;
+            margin: 0 auto;
+            counter-reset: situation-counter;
+        }
+        
+        .situation-item {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 25px 25px 25px 80px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border-left: 5px solid transparent;
+        }
+        
+        .situation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-left-color: var(--color-accent);
+        }
+        
+        .situation-item:before {
+            counter-increment: situation-counter;
+            content: counter(situation-counter);
+            position: absolute;
+            left: 25px;
             top: 50%;
             transform: translateY(-50%);
-            background: var(--color-white);
-            border: 2px solid var(--color-gray-light);
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-accent);
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            font-size: 20px;
-            color: var(--color-gray-dark);
-            user-select: none;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            font-weight: 800;
+            font-size: 18px;
         }
         
-        .situation-slider-btn:hover {
-            background-color: var(--color-light);
-            border-color: var(--color-gray);
+        .situation-text {
+            font-size: 18px;
+            line-height: 1.5;
             color: var(--color-dark);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .situation-slider-btn.prev {
-            left: 0;
-        }
-        
-        .situation-slider-btn.next {
-            right: 0;
-        }
-        
-        /* Индикаторы слайдов ситуаций */
-        .situation-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 40px;
-        }
-        
-        .situation-indicator {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background-color: var(--color-gray-light);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .situation-indicator.active {
-            background-color: var(--color-hot);
-            transform: scale(1.2);
-        }
-        
-        /* Метод работы */
+        /* Подход и методы */
         .method-content {
             max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .method-content p {
-            margin-bottom: 20px;
-            font-size: 24px;
+            margin: 0 auto 40px;
+            font-size: 22px;
+            line-height: 1.7;
             color: var(--color-gray-dark);
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            text-align: justify;
+            text-align: center;
         }
         
-        .method-points {
-            margin-top: 40px;
+        .results-list {
+            max-width: 800px;
+            margin: 0 auto;
+            counter-reset: result-counter;
         }
         
-        .method-point {
-            display: flex;
-            align-items: flex-start;
+        .result-item {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 25px 25px 25px 90px;
             margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: left;
+            position: relative;
         }
         
-        .method-point-number {
-            font-family:Arial, Helvetica, sans-serif;
-            font-size: 32px;
-            color: var(--color-hot);
-            margin-right: 15px;
-            min-width: 40px;
+        .result-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-hover);
         }
         
-        .method-point-text h4 {
-            font-family: 'Cormorant Garamond', serif;
+        .result-item:before {
+            counter-increment: result-counter;
+            content: counter(result-counter);
+            position: absolute;
+            left: 25px;
+            top: 25px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
             font-size: 22px;
-            margin-bottom: 10px;
-            color: var(--color-dark);
         }
-
-         .method-point-text p {
-            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-size: 22px;
-            margin-bottom: 10px;
+        
+        .result-text {
+            font-size: 18px;
+            line-height: 1.6;
             color: var(--color-dark);
         }
         
         /* Тарифы */
-        .tariffs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+        .tariffs-container {
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
         .tariff-card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 450px;
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
             padding: 40px 30px;
-            border: 1px solid var(--color-gray-light);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid transparent;
         }
         
-        .tariff-hot {
-            border-color: var(--color-hot);
+        .tariff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--color-accent-light);
+        }
+        
+        .tariff-card.hot {
+            border-color: var(--color-accent);
         }
         
         .hot-badge {
             position: absolute;
             top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--color-hot);
+            right: 30px;
+            background-color: var(--color-accent);
             color: white;
-            padding: 5px 20px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
             font-size: 14px;
-            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(139, 0, 0, 0.2);
         }
         
         .tariff-name {
-            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-size: 28px;
+            font-size: 26px;
+            font-weight: 700;
             margin-bottom: 20px;
-            text-align: center;
             color: var(--color-dark);
         }
         
         .tariff-price {
-            text-align: center;
-            margin-bottom: 30px;
-            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin-bottom: 25px;
         }
         
         .price-current {
-            font-size: 52px;
+            font-size: 48px;
             font-weight: 800;
-            color: var(--color-dark);
-        }
-        
-        .price-current:hover {
-            font-size: 52px;
-            font-weight: 800;
-            color: var(--color-hot);
+            color: var(--color-accent);
         }
         
         .price-old {
@@ -414,81 +481,155 @@
         
         .tariff-features {
             list-style: none;
-            margin-bottom: 2px;
-            font-size: 18px;
+            margin-bottom: 30px;
+            flex-grow: 1;
         }
         
         .tariff-features li {
-            margin-bottom: 8px;
-            padding-left: 15px;
+            margin-bottom: 12px;
+            padding-left: 30px;
             position: relative;
+            font-size: 16px;
+            line-height: 1.5;
         }
         
         .tariff-features li:before {
-            content: "•";
-            position: relative;
+            content: "✓";
+            position: absolute;
             left: 0;
-            color: var(--color-hot);
-            font-size: 30px;
+            color: var(--color-accent);
+            font-weight: bold;
         }
         
-        /* Раздел "Обо мне" */
-        .about-section {
-            border-bottom: 1px solid var(--color-gray-light);
+        .tariff-btn {
+            margin-top: auto;
         }
         
-        .about-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 60px;
-            max-width: 1100px;
+        /* Отзывы - слайдер */
+        .reviews-slider-container {
+            max-width: 350px;
             margin: 0 auto;
+            position: relative;
         }
         
-        .about-photo-container {
-            flex: 0 0 350px;
+        .reviews-slider {
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
         }
         
-        .about-photo-placeholder {
-            width: 100%;
-            height: 450px;
-            background-color: var(--color-gray-light);
+        .reviews-slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .review-slide {
+            flex: 0 0 100%;
+            padding: 20px;
+            background-color: var(--color-white);
+            text-align: center;
+        }
+        
+        .review-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .slider-btn {
+            background-color: var(--color-white);
+            border: 2px solid var(--color-gray-light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-gray-medium);
-            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 20px;
+            color: var(--color-gray-dark);
+        }
+        
+        .slider-btn:hover {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+            color: white;
+        }
+        
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--color-gray-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .slider-dot.active {
+            background-color: var(--color-accent);
+            transform: scale(1.2);
+        }
+        
+        /* Обо мне */
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
         .about-photo {
             width: 100%;
-            height: 450px;
-            object-fit: cover;
-            display: block;
+            max-width: 350px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 0 auto;
         }
         
-        .about-text {
+        .about-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .about-photo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content {
             flex: 1;
         }
         
-        .about-text h3 {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-size: 34px;
-            margin-bottom: 8px;
+        .about-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
             color: var(--color-dark);
-            font-weight: 500;
         }
         
-        .about-text p {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-size: 22px;
-        }
-
-        .about-description {
+        .about-text {
             font-size: 18px;
-            color: var(--color-dark);
-            margin-bottom: 40px;
-            line-height: 1.8;
+            line-height: 1.7;
+            color: var(--color-gray-dark);
+            margin-bottom: 30px;
         }
         
         .education-list {
@@ -497,770 +638,506 @@
         
         .education-item {
             margin-bottom: 25px;
-            padding-left: 0;
-            position: relative;
-        }
-        
-
-        .education-item h4 {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: var(--color-dark);
-        }
-        
-        .education h4{
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-size: 28px;
-            margin-bottom: 8px;
-            color: var(--color-dark);
-        }
-
-
-        .education-item p {
-            color: var(--color-dark);
-            font-size: 18px;
-        }
-        
-        .education-item:not(:last-child) {
             padding-bottom: 25px;
             border-bottom: 1px solid var(--color-gray-light);
         }
         
-        /* ОТЗЫВЫ - СЛАЙДЕР */
-        .reviews-slider-section {
-            position: relative;
-            padding: 80px 0;
-            overflow: hidden;
+        .education-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
         
-        .reviews-slider-container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .reviews-slider {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            touch-action: pan-y;
-        }
-        
-        .review-slide {
-            flex: 0 0 100%;
-            max-width: 100%;
-            padding: 0 15px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .review-image {
-            max-width: 100%;
-            height: auto;
-            max-height: 600px;
-            object-fit: contain;
-            border: 1px solid var(--color-gray-light);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Кнопки навигации слайдера */
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--color-white);
-            border: 1px solid var(--color-gray-light);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
+        .education-item h4 {
             font-size: 20px;
-            color: var(--color-gray-dark);
-            user-select: none;
-        }
-        
-        .slider-btn:hover {
-            background-color: var(--color-light);
-            border-color: var(--color-gray);
+            font-weight: 700;
+            margin-bottom: 8px;
             color: var(--color-dark);
         }
         
-        .slider-btn.prev {
-            left: 0;
-        }
-        
-        .slider-btn.next {
-            right: 0;
-        }
-        
-        /* Индикаторы слайдов */
-        .slider-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
-        }
-        
-        .slider-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--color-gray-light);
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .slider-indicator.active {
-            background-color: var(--color-gray-dark);
-        }
-        
-        /* Миниатюры для мобильных */
-        .thumbnails-container {
-            display: none;
-            margin-top: 20px;
-            overflow-x: auto;
-            padding: 10px 0;
-            scrollbar-width: thin;
-            scrollbar-color: var(--color-gray) var(--color-light);
-        }
-        
-        .thumbnails-container::-webkit-scrollbar {
-            height: 4px;
-        }
-        
-        .thumbnails-container::-webkit-scrollbar-track {
-            background: var(--color-light);
-        }
-        
-        .thumbnails-container::-webkit-scrollbar-thumb {
-            background-color: var(--color-gray);
-            border-radius: 2px;
-        }
-        
-        .thumbnail {
-            flex: 0 0 auto;
-            width: 80px;
-            height: 100px;
-            margin-right: 10px;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .thumbnail.active {
-            opacity: 1;
-            border-color: var(--color-gray-dark);
+        .education-item p {
+            color: var(--color-gray-medium);
+            font-size: 16px;
         }
         
         /* Подвал */
         footer {
-            padding: 50px 0 30px;
-            background-color: var(--color-light);
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
         
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .footer-logo {
+            font-weight: 800;
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .footer-logo span {
+            color: var(--color-accent-light);
         }
         
         .footer-links {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            margin: 30px 0;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
         }
         
         .footer-links a {
-            color: var(--color-gray-medium);
+            color: var(--color-gray-light);
             text-decoration: none;
-            margin: 0 15px 10px;
-            font-size: 14px;
+            transition: var(--transition);
+            font-size: 15px;
         }
         
         .footer-links a:hover {
-            color: var(--color-dark);
+            color: var(--color-accent-light);
         }
         
         .footer-info {
-            color: var(--color-gray);
             font-size: 14px;
-            margin-top: 30px;
+            color: var(--color-gray);
+            line-height: 1.6;
+            max-width: 800px;
         }
         
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 18px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 28px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        }
-        
-        .btn-buy {
-            background-color: var(--color-dark);
-            color: white;
-        }
-        
-        .btn-buy:hover {
-            background-color: var(--color-gray-medium);
-        }
-        
-        .btn-hot {
-            background-color: var(--color-hot);
-            color: white;
-        }
-        
-        .btn-hot:hover {
-            opacity: 0.75;
-        }
-        
-        /* Адаптивность */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
+        /* Мобильная адаптация */
+        @media (min-width: 768px) {
+            body {
+                font-size: 17px;
+            }
+            
+            .hero-container {
+                flex-direction: row;
                 align-items: center;
-                gap: 40px;
+                text-align: left;
             }
             
-            .about-photo-container {
-                flex: 0 0 auto;
-                width: 100%;
-                max-width: 400px;
+            .hero-photo {
+                max-width: 350px;
             }
             
-            .about-photo-placeholder {
-                height: 400px;
-            }
-            
-            .situations-slider-container,
-            .reviews-slider-container {
-                max-width: 700px;
-            }
-            
-            .situation-card {
-                padding: 35px 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            nav li {
-                margin: 0 10px 10px;
-            }
-            
-            nav a {
-                font-size: 20px;
+            .hero-content {
+                text-align: left;
+                padding-left: 40px;
             }
             
             .hero-quote {
-                font-size: 32px;
+                font-size: 34px;
+                padding-left: 30px;
+            }
+            
+            .hero-quote:before {
+                left: 0;
+            }
+            
+            .tariffs-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-container {
+                flex-direction: row;
+                align-items: flex-start;
             }
             
             .section-title {
-                font-size: 30px;
-            }
-            
-            .tariffs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tariff-card {
-                width: 100%;
-            }
-            
-            .about-description p{
-                font-size: 19px;
-            }
-
-            .about-text h3{
-                font-size: 26px;
-                font-weight: 900;
-            }
-            .hero{
-                padding: 0px;
-                margin: 0%;
-            }
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px;
-                margin-top: 0%;
-            }
-            .hero-photo {
-                max-width: 250px;
-                margin: 0;
-            }
-
-            .hero-image {
-                max-width: 350px;
-                margin: 0;
-            }
-            .about-photo-placeholder {
-                height: 350px;
-            }
-            
-            .situation-slider-btn,
-            .slider-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            
-            .thumbnails-container {
-                display: flex;
-            }
-            
-            .slider-indicators {
-                display: none;
-            }
-            
-            .situation-card h3 {
-                font-size: 20px;
-            }
-            
-            .situation-card {
-                padding: 30px 25px;
-            }
-
-            .method-content p{
-                font-size: 19px;
-            }
-
-            .situation-card p{
-                font-size: 14px;
+                font-size: 36px;
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 767px) {
+            /* Мобильное меню */
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--color-white);
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+                transition: right 0.4s ease;
+                z-index: 1000;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav a {
+                font-size: 18px;
+                display: block;
+                padding: 10px 0;
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            /* Корректировки для мобильных */
             .hero {
-                padding: 70px 0;
+                padding: 120px 0 60px;
             }
             
             .hero-quote {
-                font-size: 26px;
-            }
-            
-            .hero-photo {
-                max-width: 250px;
-                align-items: center;
-                align-self: center;
-            }
-            
-            section {
-                padding: 60px 0;
+                font-size: 24px;
             }
             
             .section-title {
                 font-size: 28px;
-                margin-bottom: 25px;
             }
             
-            .about-photo-placeholder {
-                height: 300px;
+            .btn {
+                padding: 14px 30px;
+                font-size: 16px;
+                width: 100%;
+                margin-bottom: 10px;
             }
             
-            .situations-slider-container,
-            .reviews-slider-container {
-                padding: 0 40px;
+            .btn-secondary {
+                margin-left: 0;
             }
             
-            .situation-slider-btn,
+            .situation-item {
+                padding: 20px 20px 20px 70px;
+            }
+            
+            .result-item {
+                padding: 20px 20px 20px 75px;
+            }
+            
+            .price-current {
+                font-size: 40px;
+            }
+            
             .slider-btn {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-quote {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .situation-item:before,
+            .result-item:before {
                 width: 35px;
                 height: 35px;
+                font-size: 16px;
             }
             
-            .review-image {
-                max-height: 500px;
+            .situation-item {
+                padding: 18px 18px 18px 65px;
             }
             
-            .situation-card {
-                padding: 25px 20px;
+            .result-item {
+                padding: 18px 18px 18px 65px;
             }
             
-            .situation-card h3 {
-                font-size: 18px;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .review-image {
-                max-height: 400px;
+            .price-current {
+                font-size: 36px;
             }
             
-            .situation-slider-btn,
-            .slider-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 14px;
+            .tariff-card {
+                padding: 30px 20px;
             }
-            
-            .situations-slider-container,
-            .reviews-slider-container {
-                padding: 0 35px;
-            }
-            
-            .situation-card {
-                padding: 20px 15px;
-            }
-            
-            .situation-card h3 {
-                font-size: 17px;
-            }
-        }
-        
-        /* Анимация для перехода слайдов */
-        @keyframes fadeIn {
-            from { opacity: 0.7; }
-            to { opacity: 1; }
-        }
-        
-        .situation-slide.active,
-        .review-slide.active {
-            animation: fadeIn 0.5s ease;
         }
     </style>
 </head>
 <body>
     <!-- Шапка -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">Психолог Марина Федорина<span></span></a>
-                <nav>
-                    <ul>
-                        <li><a href="#situations">Ситуации</a></li>
-                        <li><a href="#method">Мой подход</a></li>
-                        <li><a href="#tariffs">Тарифы</a></li>
-                        <li><a href="#reviews">Отзывы</a></li>
-                        <li><a href="#about">Обо мне</a></li>
-                    </ul>
-                </nav>
-            </div>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <!-- <i class="fas fa-brain"></i> -->
+                Марина Федорина
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#situations">Ситуации</a></li>
+                    <li><a href="#method">Подход</a></li>
+                    <li><a href="#tariffs">Тарифы</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#about">Обо мне</a></li>
+                </ul>
+            </nav>
+            
+            <div class="overlay" id="overlay"></div>
         </div>
     </header>
 
-    <!-- Главное обращение -->
+    <!-- Главный баннер -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content" style="display: flex; align-items: center; gap: 60px;">
-                <!-- Фото слева -->
-                <div class="hero-photo">
-                    <img src="images/hero-first.png" alt="Марина Федорина" class="hero-image">
-                </div>
-                
-                <!-- Текст справа -->
-                <div class="hero-text" style="flex: 1;">
-                    <div class="hero-quote">
-                        "Вы станете для ребенка и своей семьи в целом, спокойной и поддерживающей опорой, сохранив с ними близкий и доверительный контакт даже в самый «сильный шторм»."
-                    </div>
-                    <div class="hero-subtitle">
-                        Психоаналитический терапевт Марина Федорина
-                    </div>
-                    <div class="hero-cta">
-                        <a href="#tariffs" class="hero-link-btn">
-                            <span>ЗАПИСАТЬСЯ</span>
-                            <svg class="link-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+        <div class="container hero-container">
+            <div class="hero-photo">
+                <img src="images/hero-new.jpeg" alt="Марина Федорина, психолог">
             </div>
-        </div>
-    </section>
-
-    <!-- Знакомы ли вам эти ситуации? - Свайп галерея -->
-    <section id="situations" class="situations-slider-section">
-        <div class="container">
-            <h2 class="section-title">Знакомы ли вам эти ситуации?</h2>
             
-            <div class="situations-slider-container">
-                <!-- Кнопка "назад" -->
-                <button class="situation-slider-btn prev">‹</button>
-                
-                <!-- Основной слайдер ситуаций -->
-                <div class="situations-slider">
-                    <!-- Слайд 1 -->
-                    <div class="situation-slide active">
-                        <div class="situation-card">
-                            <p>«Мой ребенок меня не слышит, приходится повторять по сто раз одно и тоже»</p>
-                            <p>«Часто переживаю, что мой ребенок заболеет или с ним что-то случиться»</p>
-                            <p>«Тревожусь из-за каждого чиха ребенка, рисуя мысленно карты болезни»</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Слайд 2 -->
-                    <div class="situation-slide">
-                        <div class="situation-card">
-                            <p>«Часто думаю и переживаю, что с мужем или ребенком может что-то произойти плохое (авария, болезнь, несчастный случай)»</p>
-                            <p>«Если мне дочь долго не отвечает на звонки, в моей голове рисуются ужасные картины и я ничего с этим не могу поделать…»</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Слайд 3 -->
-                    <div class="situation-slide">
-                        <div class="situation-card">
-                            <p>«Когда близких нет рядом, ощущаю внутреннюю пустоту, очень тяжело переношу чувство одиночества, ощущение, как будто забрали часть меня»</p>
-                            <p>«Очень сложно справится с контролем, должна постоянно знать, что как и где с моими детьми, а иногда и мужем»</p>
-                            <p>«А ещё часто кажется, что если сейчас все так хорошо, то обязательно должно произойти что-то плохое.»</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Слайд 4 -->
-                    <div class="situation-slide">
-                        <div class="situation-card">
-                            <p>«Мне сложно выдерживать эмоции детей, часто срываюсь, перехожу на крик и как следствие испытываю чувство вины.»</p>
-                            <p>«Сложности во взаимоотношениях с мужем, приходится заниматься воспитанием детей самой, как будто её никто не слышит и не понимает»</p>
-                            <p>«Потеряла баланс между семейной жизнью, работой, заботой и вниманием себе»</p>
-                            <p>«Испытываю частый стресс, напряжение, порой прибегая к помощи «холодильника» или пары бокалов вина»</p>
-                        </div>
-                    </div>
+            <div class="hero-content">
+                <div class="hero-quote">
+                    Вы станете для ребенка и своей семьи спокойной и поддерживающей опорой, сохранив близкий и доверительный контакт даже в самый «сильный шторм».
                 </div>
-                
-                <!-- Кнопка "вперед" -->
-                <button class="situation-slider-btn next">›</button>
-                
-                <!-- Индикаторы (точки) для ситуаций -->
-                <div class="situation-indicators">
-                    <span class="situation-indicator active" data-slide="0"></span>
-                    <span class="situation-indicator" data-slide="1"></span>
-                    <span class="situation-indicator" data-slide="2"></span>
-                    <span class="situation-indicator" data-slide="3"></span>
+                <div class="hero-subtitle">
+                    Психоаналитический терапевт Марина Федорина
+                </div>
+                <div class="hero-buttons">
+                    <a href="#tariffs" class="btn">Записаться на консультацию</a>
+                    <a href="#about" class="btn btn-secondary">Узнать больше</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Метод работы -->
-    <section id="method">
+    <!-- Ситуации -->
+    <section id="situations">
         <div class="container">
-            <h2 class="section-title">Мой подход и метод работы</h2>
-            <div class="method-content">
-                <p>Имея более 10 лет опыта работы в частной практике и используя глубинный подход-психоанализа, с опорой на семейную системную психотерапию. В работе с клиентами, я не просто убираю поверхностный симптом, а помогаю женщине обнаружить корни её переживаний, осмыслить неосознаваемые конфликты и шаблоны поведения, которые влияют на эмоциональное состояние и повседневную жизнь и жизнь её семьи.</p>
-                <h2 class="section-title">В результате :</h2>
+            <h2 class="section-title animate">Ваши ситуации</h2>
+            
+            <div class="situations-list">
+                <div class="situation-item animate">
+                    <p class="situation-text">«Мой ребенок меня не слышит, приходится повторять по сто раз одно и то же»</p>
+                </div>
+                
+                <div class="situation-item animate">
+                    <p class="situation-text">«Часто переживаю, что мой ребенок заболеет или с ним что-то случится»</p>
+                </div>
+                
+                <div class="situation-item animate">
+                    <p class="situation-text">«Тревожусь из-за каждого чиха ребенка, рисуя мысленно карты болезни»</p>
+                </div>
+                
+                <div class="situation-item animate">
+                    <p class="situation-text">«Если мне дочь долго не отвечает на звонки, в моей голове рисуются ужасные картины и я ничего с этим не могу поделать…»</p>
+                </div>
+                
+                <div class="situation-item animate">
+                    <p class="situation-text">«Часто думаю и переживаю, что с мужем или ребенком может что-то произойти плохое (авария, болезнь, несчастный случай)»</p>
+                </div>
 
-                <div class="method-points">
-                    <div class="method-point">
-                        <div class="method-point-number">1</div>
-                        <div class="method-point-text">
-                            <p>Вы не просто поймете причину своей тревоги, страхов, но научитесь справляться и управлять своим состоянием.</p>
-                        </div>
-                    </div>
-                    <div class="method-point">
-                        <div class="method-point-number">2</div>
-                        <div class="method-point-text">
-                            <p>Получите: спокойствие, уверенность в себе. Больше сил и энергии, как будто в сутках стало больше 24 часов, потому что вы стали успевать больше и качественнее</p>
-                        </div>
-                    </div>
-                    <div class="method-point">
-                        <div class="method-point-number">3</div>
-                        <div class="method-point-text">
-                            <p>Появится еще больше ощущения счастья и удовольствия от жизни</p>
-                        </div>
-                    </div>
-                    <div class="method-point">
-                        <div class="method-point-number">4</div>
-                        <div class="method-point-text">
-                            <p>Научитесь лучше понимать и взаимодействовать с со своими детьми и окружающими людьми.</p>
-                        </div>
-                    </div>
-                    <div class="method-point">
-                        <div class="method-point-number">5</div>
-                        <div class="method-point-text">
-                            <p>Вы выходите из "колеса" и ощущаете, что ситуация в ваших руках. А то, что не в ваших - не стоит переживаний. Реалистичный взгляд на ситуацию придает уверенности в благополучном будущем.</p>
-                        </div>
-                    </div>
+                <div class="situation-item animate">
+                    <p class="situation-text">«Когда близких нет рядом, ощущаю внутреннюю пустоту, очень тяжело переношу чувство одиночества»</p>
+                </div>
+                
+                <div class="situation-item animate">
+                    <p class="situation-text">«Мне сложно выдерживать эмоции детей, часто срываюсь, перехожу на крик и как следствие испытываю чувство вины»</p>
+                </div>
+
+                <div class="situation-item animate">
+                    <p class="situation-text">«Сложности во взаимоотношениях с мужем, приходится заниматься воспитанием детей самой, как будто её никто не слышит и не понимает»</p>
+                </div>
+
+
+                <div class="situation-item animate">
+                    <p class="situation-text">«Потеряла баланс между семейной жизнью, работой, заботой и вниманием себе»</p>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Подход и методы -->
+    <section id="method" style="background-color: var(--color-light);">
+        <div class="container">
+            <h2 class="section-title animate">Мой подход и метод работы</h2>
+            
+            <div class="method-content animate">
+                <p>Имея более 10 лет опыта работы в частной практике и используя глубинный подход-психоанализа, с опорой на семейную системную психотерапию.</p>
+            </div>
+
+            <div class="method-content animate">
+                <p>В работе с клиентами я не просто убираю поверхностный симптом, а помогаю женщине обнаружить корни её переживаний, осмыслить неосознаваемые конфликты и шаблоны поведения.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+                    <h2 class="section-title animate">В результате:</h2>
+            
+            <div class="results-list">
+                <div class="result-item animate">
+                    <p class="result-text">Вы не просто поймете причину своей тревоги, страхов, но научитесь справляться и управлять своим состоянием.</p>
+                </div>
+                
+                <div class="result-item animate">
+                    <p class="result-text">Получите спокойствие, уверенность в себе. Больше сил и энергии, как будто в сутках стало больше 24 часов.</p>
+                </div>
+                
+                <div class="result-item animate">
+                    <p class="result-text">Появится еще больше ощущения счастья и удовольствия от жизни.</p>
+                </div>
+                
+                <div class="result-item animate">
+                    <p class="result-text">Научитесь лучше понимать и взаимодействовать со своими детьми и окружающими людьми.</p>
+                </div>
+                
+                <div class="result-item animate">
+                    <p class="result-text">Вы выходите из "колеса" и ощущаете, что ситуация в ваших руках. А то, что не в ваших - не стоит переживаний. Реалистичный взгляд на ситуацию придает уверенности в благополучном будущем.</p>
+                </div>
+            </div>
     </section>
 
     <!-- Тарифы -->
     <section id="tariffs">
         <div class="container">
-            <h2 class="section-title">Формат работы и тарифы</h2>
-            <div class="tariffs">
+            <h2 class="section-title animate">Формат работы и тарифы</h2>
+            
+            <div class="tariffs-container">
                 <!-- Базовый тариф -->
-                <div class="tariff-card">
+                <div class="tariff-card animate">
                     <h3 class="tariff-name">Разовая сессия</h3>
                     <div class="tariff-price">
                         <span class="price-current">3 500 ₽</span>
                     </div>
+                    
                     <ul class="tariff-features">
                         <li>Консультация 50 минут онлайн или очно</li>
                         <li>Разберем актуальный запрос</li>
-                        <li>Начнем работать с ключевыми причинами текущего состояния</li>
-                        <li>Наметим конкретные шаги, которые сможете применить сразу после консультации</li>
-                        <li>Уже после первой консультации, вы начнете замечать изменения в своем состоянии.</li>
+                        <li>Начнем работать с ключевыми причинами</li>
+                        <li>Наметим конкретные шаги</li>
+                        <li>Изменения после первой консультации</li>
                     </ul>
-                    <button class="btn btn-buy">Записаться</button>
+                    
+                    <a href="https://t.me/Ma81rui" target="_blank" class="btn tariff-btn">Записаться</a>
                 </div>
                 
-                <!-- "Горячий" тариф со скидкой -->
-                <div class="tariff-card tariff-hot">
+                <!-- "Горячий" тариф -->
+                <div class="tariff-card hot animate">
                     <div class="hot-badge">Выгодно</div>
-                    <h3 class="tariff-name">Курс 3 месяца/1 раз в неделю</h3>
+                    <h3 class="tariff-name">Курс 3 месяца</h3>
                     <div class="tariff-price">
                         <span class="price-current">35 000 ₽</span>
-                        <ul class="tariff-features">
-                        </ul>
+                        <span class="price-old">42 000 ₽</span>
                     </div>
+                    
                     <ul class="tariff-features">
-                        <li>+ 2 встречи Вам в подарок</li>
+                        <li>+ 2 встречи в подарок</li>
                         <li>Всего 2 900 ₽ за консультацию</li>
                         <li>12 индивидуальных сессий по 50 минут</li>
-                        <li>Системная работа над проблемой, чтобы появились устойчивые изменения, сформировались новые модели поведения, изменился внутренний диалог</li>
-                        <li>Одна встреча в неделю, продолжительность -50 мин, в закрепленное за вами время и день</li>
+                        <li>Системная работа над проблемой</li>
+                        <li>Одна встреча в неделю</li>
                         <li>Индивидуальная программа</li>
                     </ul>
-                    <button class="btn btn-hot">Записаться</button>
+                    
+                    <a href="https://t.me/Ma81rui" target="_blank" class="btn tariff-btn">Записаться</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Отзывы - Слайдер -->
-    <section id="reviews" class="reviews-slider-section">
+    <!-- Отзывы -->
+    <section id="reviews" style="background-color: var(--color-light);">
         <div class="container">
-            <h2 class="section-title">Отзывы клиентов</h2>
+            <h2 class="section-title animate">Отзывы клиентов</h2>
             
             <div class="reviews-slider-container">
-                <!-- Кнопка "назад" -->
-                <button class="slider-btn prev">‹</button>
-                
-                <!-- Основной слайдер -->
                 <div class="reviews-slider">
-                    <!-- Слайд 1 -->
-                    <div class="review-slide active">
-                        <img src="images/otzyvi/1.jpg" alt="Отзыв клиента 1" class="review-image">
-                    </div>
-                    <!-- Слайд 2 -->
-                    <div class="review-slide">
-                        <img src="images/otzyvi/2-1.jpg" alt="Отзыв клиента 2 часть 1" class="review-image">
-                    </div>
-                    <!-- Слайд 3 -->
-                    <div class="review-slide">
-                        <img src="images/otzyvi/2-2.jpg" alt="Отзыв клиента 2 часть 2" class="review-image">
-                    </div>
-                    <!-- Слайд 4 -->
-                    <div class="review-slide">
-                        <img src="images/otzyvi/4.jpg" alt="Отзыв клиента 4" class="review-image">
-                    </div>
-                    <!-- Слайд 5 -->
-                    <div class="review-slide">
-                        <img src="images/otzyvi/5.jpg" alt="Отзыв клиента 5" class="review-image">
-                    </div>
-                    <!-- Слайд 6 -->
-                    <div class="review-slide">
-                        <img src="images/otzyvi/6.jpg" alt="Отзыв клиента 6" class="review-image">
+                    <div class="reviews-slider-track" id="sliderTrack">
+                        <!-- Слайды будут добавлены через JavaScript -->
                     </div>
                 </div>
                 
-                <!-- Кнопка "вперед" -->
-                <button class="slider-btn next">›</button>
-                
-                <!-- Индикаторы (точки) -->
-                <div class="slider-indicators">
-                    <span class="slider-indicator active" data-slide="0"></span>
-                    <span class="slider-indicator" data-slide="1"></span>
-                    <span class="slider-indicator" data-slide="2"></span>
-                    <span class="slider-indicator" data-slide="3"></span>
-                    <span class="slider-indicator" data-slide="4"></span>
-                    <span class="slider-indicator" data-slide="5"></span>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="slider-dots" id="sliderDots">
+                        <!-- Точки будут добавлены через JavaScript -->
+                    </div>
+                    
+                    <button class="slider-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
-                
-                <!-- Миниатюры для мобильных -->
-                <div class="thumbnails-container">
-                    <div class="thumbnail active" data-slide="0">
-                        <img src="images/otzyvi/1.jpg" alt="Отзыв 1">
-                    </div>
-                    <div class="thumbnail" data-slide="1">
-                        <img src="images/otzyvi/2-1.jpg" alt="Отзыв 2-1">
-                    </div>
-                    <div class="thumbnail" data-slide="2">
-                        <img src="images/otzyvi/2-2.jpg" alt="Отзыв 2-2">
-                    </div>
-                    <div class="thumbnail" data-slide="3">
-                        <img src="images/otzyvi/4.jpg" alt="Отзыв 4">
-                    </div>
-                    <div class="thumbnail" data-slide="4">
-                        <img src="images/otzyvi/5.jpg" alt="Отзыв 5">
-                    </div>
-                    <div class="thumbnail" data-slide="5">
-                        <img src="images/otzyvi/6.jpg" alt="Отзыв 6">
-                    </div>
-                </div>
+            </div>
+            <div class="barabarabere">
+                <a href="#tariffs" class="btn">Записаться на консультацию</a>
             </div>
         </div>
     </section>
 
     <!-- Обо мне -->
-    <section id="about" class="about-section">
+    <section id="about">
         <div class="container">
-            <h2 class="section-title">Обо мне</h2>
-            <div class="about-content">
-                <!-- Левая часть: фото -->
-                <div class="about-photo-container">
-                    <img src="images/hero-image.jpg" alt="Марина Федорина, профессиональный психолог" class="about-photo">
+            <h2 class="section-title animate">Обо мне</h2>
+            
+            <div class="about-container">
+                <div class="about-photo animate">
+                    <img src="images/hero-image.jpg" alt="Марина Федорина">
                 </div>
                 
-                <!-- Правая часть: текст и образование -->
-                <div class="about-text">
-                    <h3>Марина Федорина</h3>
-                    <h3>семейный психолог, психолог-педагог, психоаналитический терапевт.</h3>
-                    <div class="about-description">
+                <div class="about-content">
+                    <h3 class="about-title animate">Марина Федорина</h3>
+                    <div class="about-text animate">
+                        <!-- <p>Семейный психолог, психолог-педагог, психоаналитический терапевт.</p> -->
                         <p>Более 10 лет частной практики, опыт преподавания психологии.</p>
                         <p>Автор и ведущая женских групп и тренингов.</p>
                         <p>Счастливая жена и многодетная мама.</p>
                     </div>
                     
-                    <!-- Блок с образованием -->
                     <div class="education">
-                        <h4>Образование и квалификация</h4>
+                        <h3 class="about-title animate">Образование и квалификация</h3>
+                        
                         <ul class="education-list">
-                            <li class="education-item">
+                            <li class="education-item animate">
                                 <h4>Психолог-педагог</h4>
                                 <p>Вятский Государственный Гуманитарный Университет</p>
                             </li>
-                            <li class="education-item">
+                            
+                            <li class="education-item animate">
                                 <h4>Семейное и детское консультирование</h4>
                                 <p>Московский Институт Психоанализа</p>
                             </li>
-                            <li class="education-item">
+                            
+                            <li class="education-item animate">
                                 <h4>Психоаналитический психотерапевт</h4>
                                 <p>Институт Психоанализа на Чистых прудах</p>
                             </li>
-                            <li class="education-item">
+                            
+                            <li class="education-item animate">
                                 <h4>Психологическое консультирование взрослых</h4>
                                 <p>Академия Психологии и Коучинга</p>
                             </li>
@@ -1273,301 +1150,216 @@
 
     <!-- Подвал -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <a href="#" class="logo">Психолог Марина Федорина<span></span></a>
-                <div class="footer-links">
-                    <a href="#">Политика конфиденциальности</a>
-                    <a href="#">Договор-оферта</a>
-                    <a href="#">Реквизиты</a>
-                </div>
-                <div class="footer-info">
-                    <p>© 2025 Марина Федорина. Все права защищены.</p>
-                    <p>ИП Федорина Марина Александровна, ОГРНИП 323527500036987, ИНН 434546222756</p>
-                </div>
+        <div class="container footer-container">
+            <div class="footer-logo">Марина Федорина<span> | Психолог</span></div>
+            
+            <div class="footer-links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Договор-оферта</a>
+                <a href="#">Реквизиты</a>
+            </div>
+            
+            <div class="footer-info">
+                <p>© 2025 Марина Федорина. Все права защищены.</p>
+                <p>ИП Федорина Марина Александровна, ОГРНИП 323527500036987, ИНН 434546222756</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Плавная прокрутка к разделам
-        document.querySelectorAll('nav a').forEach(anchor => {
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const overlay = document.getElementById('overlay');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        overlay.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+            overlay.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+        
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                overlay.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
+                
                 const targetId = this.getAttribute('href');
-                if(targetId.startsWith('#')) {
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
-
-        // СЛАЙДЕР СИТУАЦИЙ
-        document.addEventListener('DOMContentLoaded', function() {
-            // Инициализация слайдера ситуаций
-            const situationSlider = document.querySelector('.situations-slider');
-            const situationSlides = document.querySelectorAll('.situation-slide');
-            const situationIndicators = document.querySelectorAll('.situation-indicator');
-            const situationPrevBtn = document.querySelector('.situation-slider-btn.prev');
-            const situationNextBtn = document.querySelector('.situation-slider-btn.next');
-            const totalSituationSlides = situationSlides.length;
-            let currentSituationSlide = 0;
-            let situationAutoSlideInterval;
-            
-            // Инициализация слайдера ситуаций
-            function initSituationSlider() {
-                updateSituationSlider();
-                startSituationAutoSlide();
-                
-                // Добавляем обработчики свайпа для мобильных устройств
-                let startX = 0;
-                let endX = 0;
-                
-                situationSlider.addEventListener('touchstart', (e) => {
-                    startX = e.touches[0].clientX;
-                    clearInterval(situationAutoSlideInterval);
-                });
-                
-                situationSlider.addEventListener('touchmove', (e) => {
-                    endX = e.touches[0].clientX;
-                });
-                
-                situationSlider.addEventListener('touchend', () => {
-                    const diff = startX - endX;
-                    
-                    if (Math.abs(diff) > 50) { // Минимальное расстояние для свайпа
-                        if (diff > 0) {
-                            nextSituationSlide();
-                        } else {
-                            prevSituationSlide();
-                        }
-                    }
-                    
-                    startSituationAutoSlide();
-                });
-            }
-            
-            // Обновление отображения слайдера ситуаций
-            function updateSituationSlider() {
-                // Перемещаем слайдер
-                situationSlider.style.transform = `translateX(-${currentSituationSlide * 100}%)`;
-                
-                // Обновляем индикаторы
-                situationIndicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentSituationSlide);
-                });
-                
-                // Обновляем активный класс на слайдах
-                situationSlides.forEach((slide, index) => {
-                    slide.classList.toggle('active', index === currentSituationSlide);
-                });
-            }
-            
-            // Следующий слайд ситуаций
-            function nextSituationSlide() {
-                currentSituationSlide = (currentSituationSlide + 1) % totalSituationSlides;
-                updateSituationSlider();
-            }
-            
-            // Предыдущий слайд ситуаций
-            function prevSituationSlide() {
-                currentSituationSlide = (currentSituationSlide - 1 + totalSituationSlides) % totalSituationSlides;
-                updateSituationSlider();
-            }
-            
-            // Автоматическое перелистывание ситуаций
-            function startSituationAutoSlide() {
-                clearInterval(situationAutoSlideInterval);
-                situationAutoSlideInterval = setInterval(nextSituationSlide, 7000); // 7 секунд
-            }
-            
-            // Переход к конкретному слайду ситуаций
-            function goToSituationSlide(index) {
-                currentSituationSlide = index;
-                updateSituationSlider();
-                startSituationAutoSlide();
-            }
-            
-            // Обработчики событий для кнопок ситуаций
-            situationPrevBtn.addEventListener('click', () => {
-                prevSituationSlide();
-                startSituationAutoSlide();
-            });
-            
-            situationNextBtn.addEventListener('click', () => {
-                nextSituationSlide();
-                startSituationAutoSlide();
-            });
-            
-            // Обработчики для индикаторов ситуаций
-            situationIndicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    goToSituationSlide(index);
-                });
-            });
-            
-            // Останавливаем автопрокрутку при наведении мыши на слайдер ситуаций
-            situationSlider.addEventListener('mouseenter', () => {
-                clearInterval(situationAutoSlideInterval);
-            });
-            
-            situationSlider.addEventListener('mouseleave', () => {
-                startSituationAutoSlide();
-            });
-            
-            // Пауза при касании на мобильных для слайдера ситуаций
-            situationSlider.addEventListener('touchstart', () => {
-                clearInterval(situationAutoSlideInterval);
-            });
-
-            // СЛАЙДЕР ОТЗЫВОВ
-            const slider = document.querySelector('.reviews-slider');
-            const slides = document.querySelectorAll('.review-slide');
-            const indicators = document.querySelectorAll('.slider-indicator');
-            const thumbnails = document.querySelectorAll('.thumbnail');
-            const prevBtn = document.querySelector('.slider-btn.prev');
-            const nextBtn = document.querySelector('.slider-btn.next');
-            const totalSlides = slides.length;
-            let currentSlide = 0;
-            let autoSlideInterval;
-            
-            // Инициализация слайдера отзывов
-            function initReviewsSlider() {
-                updateReviewsSlider();
-                startAutoSlide();
-                
-                // Добавляем обработчики свайпа для мобильных устройств
-                let startX = 0;
-                let endX = 0;
-                
-                slider.addEventListener('touchstart', (e) => {
-                    startX = e.touches[0].clientX;
-                    clearInterval(autoSlideInterval);
-                });
-                
-                slider.addEventListener('touchmove', (e) => {
-                    endX = e.touches[0].clientX;
-                });
-                
-                slider.addEventListener('touchend', () => {
-                    const diff = startX - endX;
-                    
-                    if (Math.abs(diff) > 50) { // Минимальное расстояние для свайпа
-                        if (diff > 0) {
-                            nextReviewsSlide();
-                        } else {
-                            prevReviewsSlide();
-                        }
-                    }
-                    
-                    startAutoSlide();
-                });
-            }
-            
-            // Обновление отображения слайдера отзывов
-            function updateReviewsSlider() {
-                // Перемещаем слайдер
-                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                // Обновляем индикаторы
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentSlide);
-                });
-                
-                // Обновляем миниатюры
-                thumbnails.forEach((thumbnail, index) => {
-                    thumbnail.classList.toggle('active', index === currentSlide);
-                });
-                
-                // Обновляем активный класс на слайдах
-                slides.forEach((slide, index) => {
-                    slide.classList.toggle('active', index === currentSlide);
-                });
-            }
-            
-            // Следующий слайд отзывов
-            function nextReviewsSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateReviewsSlider();
-            }
-            
-            // Предыдущий слайд отзывов
-            function prevReviewsSlide() {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateReviewsSlider();
-            }
-            
-            // Автоматическое перелистывание отзывов
-            function startAutoSlide() {
-                clearInterval(autoSlideInterval);
-                autoSlideInterval = setInterval(nextReviewsSlide, 5000); // 5 секунд
-            }
-            
-            // Переход к конкретному слайду отзывов
-            function goToReviewsSlide(index) {
-                currentSlide = index;
-                updateReviewsSlider();
-                startAutoSlide();
-            }
-            
-            // Обработчики событий для кнопок отзывов
-            prevBtn.addEventListener('click', () => {
-                prevReviewsSlide();
-                startAutoSlide();
-            });
-            
-            nextBtn.addEventListener('click', () => {
-                nextReviewsSlide();
-                startAutoSlide();
-            });
-            
-            // Обработчики для индикаторов отзывов
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    goToReviewsSlide(index);
-                });
-            });
-            
-            // Обработчики для миниатюр отзывов
-            thumbnails.forEach((thumbnail, index) => {
-                thumbnail.addEventListener('click', () => {
-                    goToReviewsSlide(index);
-                });
-            });
-            
-            // Останавливаем автопрокрутку при наведении мыши на слайдер отзывов
-            slider.addEventListener('mouseenter', () => {
-                clearInterval(autoSlideInterval);
-            });
-            
-            slider.addEventListener('mouseleave', () => {
-                startAutoSlide();
-            });
-            
-            // Пауза при касании на мобильных для слайдера отзывов
-            slider.addEventListener('touchstart', () => {
-                clearInterval(autoSlideInterval);
-            });
-            
-            // Инициализация обоих слайдеров
-            initSituationSlider();
-            initReviewsSlider();
-            
-            // Перезапуск автопрокрутки при переходе между вкладками
-            document.addEventListener('visibilitychange', () => {
-                if (!document.hidden) {
-                    startSituationAutoSlide();
-                    startAutoSlide();
-                } else {
-                    clearInterval(situationAutoSlideInterval);
-                    clearInterval(autoSlideInterval);
+        
+        // Анимации при прокрутке
+        const animateElements = document.querySelectorAll('.animate');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
+        }, {
+            threshold: 0.1
+        });
+        
+        // Инициализация анимаций
+        animateElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+        
+        // Слайдер отзывов
+        const sliderImages = [
+            'images/otzyvi/1.jpg',
+            'images/otzyvi/2-1.jpg',
+            'images/otzyvi/2-2.jpg',
+            'images/otzyvi/4.jpg',
+            'images/otzyvi/5.jpg',
+            'images/otzyvi/6.jpg'
+        ];
+        
+        const sliderTrack = document.getElementById('sliderTrack');
+        const sliderDots = document.getElementById('sliderDots');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentSlide = 0;
+        let slideInterval;
+        
+        // Создание слайдов
+        sliderImages.forEach((image, index) => {
+            // Слайд
+            const slide = document.createElement('div');
+            slide.className = 'review-slide';
+            slide.innerHTML = `<img src="${image}" alt="Отзыв клиента ${index + 1}" class="review-image">`;
+            sliderTrack.appendChild(slide);
+            
+            // Точка
+            const dot = document.createElement('div');
+            dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+            dot.dataset.index = index;
+            sliderDots.appendChild(dot);
+            
+            // Клик по точке
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+        
+        // Функция обновления слайдера
+        function updateSlider() {
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Обновление активной точки
+            document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        // Следующий слайд
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % sliderImages.length;
+            updateSlider();
+        }
+        
+        // Предыдущий слайд
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + sliderImages.length) % sliderImages.length;
+            updateSlider();
+        }
+        
+        // Переход к конкретному слайду
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+            resetInterval();
+        }
+        
+        // Автопрокрутка
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+        
+        // Инициализация слайдера
+        updateSlider();
+        startInterval();
+        
+        // Обработчики кнопок
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetInterval();
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetInterval();
+        });
+        
+        // Пауза при наведении
+        sliderTrack.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        sliderTrack.addEventListener('mouseleave', () => {
+            startInterval();
+        });
+        
+        // Анимация кнопок при наведении
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Изменение шапки при прокрутке
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.style.padding = '10px 0';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+                header.style.padding = '15px 0';
+            }
         });
     </script>
 </body>
